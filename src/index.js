@@ -22,3 +22,7 @@ ReactDOM.render(
   <App />,
   document.getElementById('content')
 );
+
+if (module.hot) {
+  module.hot.accept()
+}
