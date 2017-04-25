@@ -107,7 +107,7 @@ class App extends Component {
   	const list = (
   		results && 
   		results[searchKey] &&
-  		results[searchKey].page
+  		results[searchKey].hits
   	) || [];
 
     return (
