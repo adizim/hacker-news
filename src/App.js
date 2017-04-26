@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 require('./App.css');
 
 const DEFAULT_QUERY = 'redux';
@@ -181,7 +181,20 @@ const Table = ({ list, onDismiss }) =>
 		)}
 	</div>
 
-const Button = ({ onClick, className = '', children }) =>
+Table.propTypes = {
+	list: PropTypes.arrayOf(
+		PropTypes.shape({
+			objectId: PropTypes.string.isRequired,
+			title: PropTypes.string,
+			author: PropTypes.string,
+			num_comments: PropTypes.number,
+			points: PropTypes.number,
+		})
+	).isRequired,
+	onDismiss: PropTypes.func.isRequired,
+};
+
+const Button = ({ onClick, className, children }) =>
 	<button
 		onClick={onClick}
 		className={className}
@@ -189,5 +202,16 @@ const Button = ({ onClick, className = '', children }) =>
 	>
 		{children}
 	</button>
+
+Button.defaultProps = {
+	className: '',
+};
+
+Button.propTypes = {
+	onClick: PropTypes.func.isRequired,
+	className: PropTypes.string,
+	children: PropTypes.node.isRequired,
+};
+
 
 export default App;
